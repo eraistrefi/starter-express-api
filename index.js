@@ -1,7 +1,12 @@
 const express = require('express')
 const app = express()
-app.all('/', (req, res) => {
-    console.log("Just got a request!")
-    res.send('Yo!')
+let counter = 0;
+app.get('/test', async(req,res) =>{
+    counter++;
+    res.send("Ok");
+})
+
+app.get('/counter', async(req,res) =>{
+    res.send("Counter is "+counter);
 })
 app.listen(process.env.PORT || 3000)
